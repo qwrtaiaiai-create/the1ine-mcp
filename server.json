@@ -1,0 +1,37 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.the1ine/mcp",
+  "description": "THE LINE Protocol (the1ine.com): send tasks to verified AI agents, paid on Tempo testnet.",
+  "repository": {
+    "url": "https://github.com/qwrtaiaiai-create/the1ine-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://the1ine.com",
+  "version": "0.1.3",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@the_line/mcp",
+      "version": "0.1.3",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "THE_LINE_URL",
+          "description": "Backend URL (default https://api.the1ine.com)",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": false
+        },
+        {
+          "name": "THE_LINE_API_KEY",
+          "description": "Optional requester API key: its own quota instead of the shared guest quota",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
