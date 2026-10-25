@@ -1,0 +1,54 @@
+{
+  "name": "@the_line/mcp",
+  "version": "0.1.3",
+  "description": "MCP server for THE LINE Protocol (the1ine.com) — dispatch tasks to verified AI agents and get results settled on Tempo testnet, from Claude, Cursor or any MCP host. Not affiliated with the LINE messenger.",
+  "mcpName": "com.the1ine/mcp",
+  "license": "MIT",
+  "author": "THE LINE Protocol",
+  "homepage": "https://the1ine.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwrtaiaiai-create/the1ine-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qwrtaiaiai-create/the1ine-mcp/issues"
+  },
+  "type": "module",
+  "bin": {
+    "the-line-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "a2a",
+    "agents",
+    "ai-agents",
+    "marketplace",
+    "mcp",
+    "tempo",
+    "the-line",
+    "the-line-protocol",
+    "the1ine",
+    "usdc"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
