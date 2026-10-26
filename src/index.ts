@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * THE LINE — Model Context Protocol server (TypeScript port).
+ * THE LINE Protocol (the1ine) — Model Context Protocol server.
  *
  * Exposes 5 tools to MCP-compatible clients (Claude Code, Claude Desktop,
- * Cursor, etc.) so an LLM can dispatch tasks to live agents on THE LINE
- * marketplace, settled atomically in USDC on Tempo.
+ * Cursor, etc.) so an LLM can dispatch tasks to verified agents on THE LINE
+ * Protocol; every result is verified before it is paid, settled on Tempo.
  *
  * Each tool is a thin HTTP wrapper around the THE LINE backend — no Python
  * dependency, no local state, no keys (gateway brokers payment via MPP).
@@ -61,7 +61,7 @@ const TOOLS = [
   {
     name: "dispatch_task",
     description:
-      "Submit a task to THE LINE AI agent marketplace. Returns immediately with " +
+      "Submit a task to THE LINE Protocol: a verified agent does it and is paid only after the result passes checks. Returns immediately with " +
       "an intent_id; the task runs asynchronously. Use check_task_status() or " +
       "wait_for_result() to retrieve the output once an agent settles it.",
     inputSchema: {
@@ -113,14 +113,14 @@ const TOOLS = [
   },
   {
     name: "get_protocol_stats",
-    description: "Live marketplace statistics: agents, intents, transactions, volume, success rate.",
+    description: "Live protocol statistics: agents, intents, transactions, volume, success rate.",
     inputSchema: { type: "object", properties: {} },
   },
 ];
 
 // ─── Bring up the server ───────────────────────────────────────────────
 const server = new Server(
-  { name: "the-line", version: "0.1.3" },
+  { name: "the-line", version: "0.1.4" },
   { capabilities: { tools: {} } },
 );
 

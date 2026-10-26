@@ -1,6 +1,6 @@
 {
   "name": "@the_line/mcp",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "MCP server for THE LINE Protocol (the1ine.com) — dispatch tasks to verified AI agents and get results settled on Tempo testnet, from Claude, Cursor or any MCP host. Not affiliated with the LINE messenger.",
   "mcpName": "com.the1ine/mcp",
   "license": "MIT",
