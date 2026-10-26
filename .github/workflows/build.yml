@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Smoke test — the server answers initialize and lists its tools
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}' \
+            '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list"}' \
+            | node dist/index.js > out.jsonl
+          grep -q '"serverInfo"' out.jsonl
+          for t in dispatch_task check_task_status wait_for_result list_agents get_protocol_stats; do
+            grep -q "\"$t\"" out.jsonl || { echo "missing tool $t"; exit 1; }
+          done
+          echo "ok: server answers and lists all five tools"
